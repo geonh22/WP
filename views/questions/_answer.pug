@@ -1,0 +1,34 @@
+.answer.card
+  .numbers.like-badge
+    .number
+      span.number.num-likes= answer.numLikes
+      //- span.number.num-likes= answer.numHates
+    .button
+      a.like.answer-like-btn(href='#', data-id=answer.id)
+        i.fa.fa-thumbs-up
+        | 
+        | 좋아요
+    //- .button
+    //-   a.hate.answer-hate-btn(href='#', data-id=answer.id)
+    //-     i.fa.fa-thumbs-down
+    //-     | 
+    //-     | 싫어요
+  .numbers.hate-badge
+    .number
+      span.number.num-hates= answer.numHates
+    .button
+      a.hate.answer-hate-btn(href='#', data-id=answer.id)
+        i.fa.fa-thumbs-down
+        | 
+        | 싫어요
+
+  .card-body
+    .content= answer.content
+  .row.card-body
+    .col-sm
+    .col-sm.text-right
+      .author
+        |  #{moment(answer.createdAt).format('YYYY-MM-DD')}
+        if answer.author
+          | 
+          | 작성자 #[a(href=`/users/${answer.author.id}`)= answer.author.name]

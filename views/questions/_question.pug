@@ -1,0 +1,18 @@
+.content= question.content
+.tags.badges
+  each tag in question.tags
+    span.badge.badge-phill.badge-secondary= tag
+    | 
+.row
+  .col-sm
+    .numbers.
+      #[span.number.num-likes= question.numLikes] 좋아요,
+      #[span.number.num-hates= question.numHates] 싫어요,
+      #[span.number.num-answers= question.numAnswers] 댓글,
+      #[span.number.num-reads= question.numReads] 읽음
+  .col-sm
+    .author
+      | #{moment(question.createdAt).format('YYYY-MM-DD')}
+      if question.author
+        | 
+        | 작성자 #[a(href=`/users/${question.author.id}`)= question.author.name] 

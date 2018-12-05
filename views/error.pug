@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  .container
+    h1.main-title.text-danger 에러 #{error.status}
+    .alert.alert-danger= message
+    pre #{error.stack}
