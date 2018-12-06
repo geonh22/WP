@@ -1,9 +1,41 @@
 .form-group
   label(for="title") 제목
-  input.form-control(type="text", name="title", placeholder="What's your question?", value=question.title)
+  input.form-control(type="text", name="title", placeholder="공모전 제목을 입력해주세요.", value=question.title)
 .form-group
-  label(for="question") 공모전
+  label(for="question") 공모전 설명
   textarea.form-control(name="content", rows="5")= question.content
 .form-group
   label(for="tags") 태그
-  input.form-control(type="text", name="tags", placeholder="tags separated by spaces", value=question.tags ? question.tags.join(" ") : "")
+  input.form-control(type="text", name="tags", placeholder="태그를 입력해주세요.", value=question.tags ? question.tags.join(" ") : "")
+.form-group
+  label(for='img') 이미지
+  input#file.form-control(type="file")
+  input#url.form-control(type="text", readonly="readonly", name="img", value="")
+  img#preview.img-fluid(src="https://dummyimage.com/200x200/ccc/fff")
+
+script.
+  $(fuction(){
+    $("#preview").hide();
+    $("#file").change(function(){
+      var file = $("#file")[0].files[0];
+      if (file) {
+        var url = "/s3?filename=" + encodeURIComponent(file.name) + "&type=" + endocdURIComponent(file.type);
+        console.log(url);
+        $.getJASON(url, function(resp){
+          console.log(resp.signedRequest);
+          $.ajax({
+            url: resp.signedRequest,
+            method: 'PUT',
+            data: file,
+            headers: {'x-amz-acl': 'public-read', 'Content-Type':file.type},
+            processData: false,
+            contentType: file.type,
+            success: function(){
+              $("#preview").attr("src", resp.url).show();
+              $("#url").val(resp.url);
+            }
+          });
+        });
+      }
+    });
+  });

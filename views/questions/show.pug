@@ -5,6 +5,8 @@ block content
     h1.main-title= question.title
 
     .question.show
+      if question.img
+        img.img-fluid(src= question.img)
       include _question
 
       .buttons
@@ -30,9 +32,9 @@ block content
     if currentUser
       form(action=`/questions/${question.id}/answers`, method='POST')
         .form-group
-          label(for='answer') Your Answer
+          label(for='answer') 댓글
           textarea.form-control(name="content", rows="5")
-        button.btn.btn-primary(type="submit") Post Your Answer
+        button.btn.btn-primary(type="submit") 확인
 
 
   script(src='/javascripts/question_client.js')

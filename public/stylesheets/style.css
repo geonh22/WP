@@ -139,18 +139,18 @@ a:hover {
     margin-bottom: 0.5em;
     color: #888; }
 
-.question-like-btn, .answer-like-btn, .question-hate-btn, .answer-hate {
+.question-like-btn, .answer-like-btn, .question-hate-btn, .answer-hate-btn {
   cursor: pointer; }
-  .question-like-btn .for-loading, .answer-like-btn .for-loading, .question-hate-btn .for-loading, .answer-hate .for-loading {
+  .question-like-btn .for-loading, .answer-like-btn .for-loading, .question-hate-btn .for-loading, .answer-hate-btn .for-loading {
     display: none; }
-  .question-like-btn.loading, .answer-like-btn.loading, .question-hate-btn.loading, .answer-hate.loading {
+  .question-like-btn.loading, .answer-like-btn.loading, .question-hate-btn.loading, .answer-hate-btn.loading {
     filter: opacity(30%);
     cursor: wait; }
-    .question-like-btn.loading > span, .answer-like-btn.loading > span, .question-hate-btn.loading > span, .answer-hate.loading > span {
+    .question-like-btn.loading > span, .answer-like-btn.loading > span, .question-hate-btn.loading > span, .answer-hate-btn.loading > span {
       display: none; }
-    .question-like-btn.loading .for-loading, .answer-like-btn.loading .for-loading, .question-hate-btn.loading .for-loading, .answer-hate.loading .for-loading {
+    .question-like-btn.loading .for-loading, .answer-like-btn.loading .for-loading, .question-hate-btn.loading .for-loading, .answer-hate-btn.loading .for-loading {
       display: inline-block; }
-  .question-like-btn.disabled, .answer-like-btn.disabled, .question-hate-btn.disabled, .answer-hate.disabled {
+  .question-like-btn.disabled, .answer-like-btn.disabled, .question-hate-btn.disabled, .answer-hate-btn.disabled {
     color: #bbb;
     cursor: default; }
 
