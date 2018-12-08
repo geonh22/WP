@@ -1,4 +1,21 @@
+ul
+  li 분야 : 
+    .area= question.area
+  li 주최사 :
+    .host= question.host
+  li 응시대상 :
+    .subject= question.subject
+  li 접수기간 :
+    .period= question.period
+  li 공모요강 :
+    .outline= question.outline
+  li 담당자 :
+    .manager= question.manager
+  li 연락처 :
+    .tel= question.tel   
+  
 .content= question.content
+
 .tags.badges
   each tag in question.tags
     span.badge.badge-phill.badge-secondary= tag

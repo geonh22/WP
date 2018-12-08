@@ -25,7 +25,15 @@ router.get('/', catchErrors(async (req, res, next) => {
   if (term) {
     query = {$or: [
       {title: {'$regex': term, '$options': 'i'}},
-      {content: {'$regex': term, '$options': 'i'}}
+      {content: {'$regex': term, '$options': 'i'}},
+      {host: {'$regex': term, '$options': 'i'}},
+      {area: {'$regex': term, '$options': 'i'}},
+      {subject: {'$regex': term, '$options': 'i'}},
+      {period: {'$regex': term, '$options': 'i'}},
+      {outline: {'$regex': term, '$options': 'i'}},
+      {manager: {'$regex': term, '$options': 'i'}},
+      {tel: {'$regex': term, '$options': 'i'}},
+
     ]};
   }
   const questions = await Question.paginate(query, {
@@ -63,6 +71,13 @@ router.put('/:id', catchErrors(async (req, res, next) => {
   }
   question.title = req.body.title;
   question.content = req.body.content;
+  question.host = req.body.host;
+  question.area = req.body.area;
+  question.subject = req.body.subject;
+  question.period = req.body.period;
+  question.outline = req.body.outline;
+  question.manager = req.body.manager;
+  question.tel = req.body.tel;
   question.tags = req.body.tags.split(" ").map(e => e.trim());
 
   await question.save();
@@ -82,6 +97,13 @@ router.post('/', needAuth, catchErrors(async (req, res, next) => {
     title: req.body.title,
     author: user._id,
     content: req.body.content,
+    host: req.body.host,
+    area: req.body.area,
+    subject: req.body.subject,
+    period: req.body.period,
+    outline: req.body.outline,
+    manager: req.body.manager,
+    tel: req.body.tel,
     tags: req.body.tags.split(" ").map(e => e.trim()),
   });
   await question.save();

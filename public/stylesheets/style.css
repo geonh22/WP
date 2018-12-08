@@ -90,6 +90,20 @@ a:hover {
     font-size: 1.3rem; }
   .question .content {
     color: #666; }
+  .question .host {
+    color: #666; }
+  .question .area {
+    color: #666; }
+  .question .subject {
+    color: #666; }
+  .question .period {
+    color: #666; }
+  .question .outline {
+    color: #666; }
+  .question .manager {
+    color: #666; }
+  .question .tel {
+    color: #666; }
   .question .tags {
     margin: 0.5em 0; }
 
