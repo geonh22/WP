@@ -32,7 +32,8 @@ router.post('', catchErrors(async (req, res, next) => {
     host: req.body.host,
     area: req.body.area,
     subject: req.body.subject,
-    period: req.body.period,
+    periodst: req.body.periodst,
+    perioden: req.body.perioden,
     outline: req.body.outline,
     manager: req.body.manager,
     tel: req.body.tel,
@@ -56,7 +57,8 @@ router.put('/:id', catchErrors(async (req, res, next) => {
   question.host = req.body.host;
   question.area = req.body.area;
   question.subject = req.body.subject;
-  question.period = req.body.period;
+  question.periodst = req.body.periodst;
+  question.perioden = req.body.perioden;
   question.outline = req.body.outline;
   question.manager = req.body.manager;
   question.tel = req.body.tel;

@@ -14,8 +14,11 @@
   label(for="subject") 응시대상
   input.form-control(type="text",name="subject", palceholder="응시 대상을 입력해주세요.", value=question.subject)
 .form-group
-  label(for="period") 접수기간
-  input.form-control(type="text",name="period", palceholder="접수기간을 입력해주세요.", value=question.period)
+  label(for="periodst") 접수 시작일
+  input.form-control(type="text",name="periodst", palceholder="접수 시작일을 입력해주세요.", value=question.periodst)
+.form-group
+  label(for="perioden") 접수 마감일
+  input.form-control(type="text",name="perioden", palceholder="접수 마감일을 입력해주세요.", value=question.perioden)
 .form-group
   label(for="outline") 공모요강
   textarea.form-control(name="outline", rows="5")= question.outline
@@ -23,9 +26,11 @@
   label(for="manager") 담당자
   input.form-control(type="text",name="manager", palceholder="담당자를 입력해주세요.", value=question.manager)
 .form-group
-  label(for="tel") 주최사
+  label(for="tel") 연락처
   input.form-control(type="text",name="tel", palceholder="연락처를 입력해주세요.", value=question.tel)
-
+.summernote
+  label(for="tel") 서머노트연습
+  input.form-control(type="textarea")
 .form-group
   label(for="tags") 태그
   input.form-control(type="text", name="tags", placeholder="태그를 입력해주세요.", value=question.tags ? question.tags.join(" ") : "")
@@ -34,6 +39,13 @@
   input#file.form-control(type="file")
   input#url.form-control(type="text", readonly="readonly", name="img", value=question.img)
   img#preview.img-fluid(src="https://dummyimage.com/200x200/ccc/fff")
+
+script.
+  $(document).ready(fuction(){
+    $('#summernote').summernote({
+      lang:'ko-KR'
+    });
+  });
 
 script.
   $(fuction(){

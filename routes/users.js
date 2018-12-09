@@ -116,5 +116,43 @@ router.post('/', catchErrors(async (req, res, next) => {
   req.flash('success', 'Registered successfully. Please sign in.');
   res.redirect('/');
 }));
+//authentication
+// 'use strict';
+// var passport = require('passport');
+// var auth = require('./auth');
+
+// //패스포트 세팅
+// require('./passport').setup();
+
+// // var router = express.Router();
+
+// //로그인 라우팅 post/login
+// router.post('/',function(req,res,next){
+//   //패스포트 모듈로 인증시도
+//   passport.authenticate('local', function(err,user,info){
+//     var error = err||info;
+//     if(error) return res.json(401,error);
+//     if(!user) return res.json(404,{message:'Something went wrong, pleas try again'});
+    
+//     //인증된 유저 정보로 응답
+//     res.json(req.user);
+//   })(req,res,next);
+// });
+
+// router.post('/', function(req, res, next) {
+//   passport.authenticate('local', function (err, user, info) {
+//     var error = err || info;
+//     if (error) return res.json(401, error);
+//     if (!user) return res.json(404, {message: 'Something went wrong, please try again.'});
+
+//     // access token 생성
+//     var token = auth.signToken(user.id);
+//     res.json({access_token: token});
+//   })(req, res, next);
+// });
+
+// router.get('/', auth.isAuthenticated(), function(req, res) {
+//   res.send(req.user);
+// });
 
 module.exports = router;
