@@ -64,7 +64,7 @@ app.use(sassMiddleware({
 
 // session을 사용할 수 있도록.
 app.use(session({
-  name: 'mjoverflow',
+  name: 'web',
   resave: true,
   saveUninitialized: true,
   secret: 'long-long-long-secret-string-1313513tefgwdsvbjkvasd'
