@@ -2,7 +2,8 @@ const express = require('express');
 const Question = require('../models/question');
 const Answer = require('../models/answer'); 
 const catchErrors = require('../lib/async-error');
-
+var multer = require('multer');
+var uploadSetting = multer({dest:"/"});
 const router = express.Router();
 
 // 동일한 코드가 users.js에도 있습니다. 이것은 나중에 수정합시다.
@@ -34,6 +35,7 @@ router.get('/', catchErrors(async (req, res, next) => {
       {outline: {'$regex': term, '$options': 'i'}},
       {manager: {'$regex': term, '$options': 'i'}},
       {tel: {'$regex': term, '$options': 'i'}},
+      {img: {'$regex': term, '$options': 'i'}},
 
     ]};
   }
@@ -80,6 +82,7 @@ router.put('/:id', catchErrors(async (req, res, next) => {
   question.outline = req.body.outline;
   question.manager = req.body.manager;
   question.tel = req.body.tel;
+  question.img = req.body.img;
   question.tags = req.body.tags.split(" ").map(e => e.trim());
 
   await question.save();
@@ -107,12 +110,35 @@ router.post('/', needAuth, catchErrors(async (req, res, next) => {
     outline: req.body.outline,
     manager: req.body.manager,
     tel: req.body.tel,
+    img: req.body.img,
     tags: req.body.tags.split(" ").map(e => e.trim()),
   });
   await question.save();
   req.flash('success', 'Successfully posted');
   res.redirect('/questions');
 }));
+
+router.post('/', uploadSetting.single('/'),function(req,res){
+  var tmpPath = req.file.path;
+  var fileName = req.file.filename;
+  var newPath = "../public/images" + fileName;
+
+  fs.rename(tmpPath,newPath,function(err){
+    if(err){
+      console.log(err);
+    }
+    var html;
+
+    html="";
+    html += "<script type='text/javascript'>";
+    html += " var funcNum = " + req.query.CKEditorFuncNum + ";";
+    html += " var url = \"/images/" + fileName + "\";";
+    html += " var message = \"업로드 완료\";";
+    html += " window.parent.CKEDITOR.tools.callFunction(funcNum, url);";
+    html += "</script>";
+    res.send(html);
+  });
+});
 
 router.post('/:id/answers', needAuth, catchErrors(async (req, res, next) => {
   const user = req.user;

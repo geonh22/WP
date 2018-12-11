@@ -36,6 +36,10 @@
     "passport-naver": "^1.0.6",
     "pug": "2.0.0-beta11",
     "serve-favicon": "~2.4.5",
-    "summernote": "^0.8.11"
+    "summernote": "^0.8.11",
+    "summernote-nodejs": "^1.0.4"
+  },
+  "devDependencies": {
+    "jshint": "^2.9.7"
   }
 }
