@@ -22,6 +22,19 @@ module.exports = (app, passport) => {
       res.redirect('/questions');
     }
   );
+  app.get('/auth/google',
+    passport.authenticate('google', { scope : 'email' })
+  );
+
+  app.get('/auth/google/callback',
+    passport.authenticate('google', {
+      failureRedirect : '/signin',
+      failureFlash : true // allow flash messages
+    }), (req, res, next) => {
+      req.flash('success', 'Welcome!');
+      res.redirect('/questions');
+    }
+  );
   app.get('/auth/naver',
     passport.authenticate('naver', { scope : 'email' })
   );

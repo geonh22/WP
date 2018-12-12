@@ -15,9 +15,10 @@ function needAuth(req, res, next) {
 function validateForm(form, options) {
   var name = form.name || "";
   var email = form.email || "";
+  var interest = interest;
+
   name = name.trim();
   email = email.trim();
-
   if (!name) {
     return 'Name is required.';
   }
@@ -76,6 +77,8 @@ router.put('/:id', needAuth, catchErrors(async (req, res, next) => {
 
   user.name = req.body.name;
   user.email = req.body.email;
+  user.interest = req.body.interest;
+
   if (req.body.password) {
     user.password = await user.generateHash(req.body.password);
   }
@@ -110,6 +113,7 @@ router.post('/', catchErrors(async (req, res, next) => {
   user = new User({
     name: req.body.name,
     email: req.body.email,
+    interest: req.body.interest,
   });
   user.password = await user.generateHash(req.body.password);
   await user.save();

@@ -11,11 +11,19 @@ block content
 
       dt.col-sm-3 회원가입 날짜
       dd.col-sm-9= user.createdAt
+
+      dt.col-sm-3 관심분야
+      dd.col-sm-9= user.interest
       
       if user.facebook.id
         dt.col-sm-3 페이스북
         dd.col-sm-9
           img.img-fluid.rounded-circle(src= user.facebook.photo)
+
+      if user.google.id
+        dt.col-sm-3 구글
+        dd.col-sm-9
+          img.img-fluid.rounded-circle(src= user.google.photo)
 
       if user.naver.id
         dt.col-sm-3 네이버
@@ -28,4 +36,4 @@ block content
       | 
       a.btn.btn-outline-primary(href=`/users/${user._id}/edit`) 수정
       | 
-      a.btn.btn-outline-danger.need-confirm-btn(href=`/users/${user._id}?_method=DELETE`) 삭제
+      a.btn.btn-outline-danger.need-confirm-btn(href=`/users/${user._id}?_method=DELETE`) 탈퇴
