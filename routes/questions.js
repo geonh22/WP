@@ -118,28 +118,6 @@ router.post('/', needAuth, catchErrors(async (req, res, next) => {
   res.redirect('/questions');
 }));
 
-// router.post('/', uploadSetting.single('/'),function(req,res){
-//   var tmpPath = req.file.path;
-//   var fileName = req.file.filename;
-//   var newPath = "../public/images" + fileName;
-
-//   fs.rename(tmpPath,newPath,function(err){
-//     if(err){
-//       console.log(err);
-//     }
-//     var html;
-
-//     html="";
-//     html += "<script type='text/javascript'>";
-//     html += " var funcNum = " + req.query.CKEditorFuncNum + ";";
-//     html += " var url = \"/images/" + fileName + "\";";
-//     html += " var message = \"업로드 완료\";";
-//     html += " window.parent.CKEDITOR.tools.callFunction(funcNum, url);";
-//     html += "</script>";
-//     res.send(html);
-//   });
-// });
-
 router.post('/:id/answers', needAuth, catchErrors(async (req, res, next) => {
   const user = req.user;
   const question = await Question.findById(req.params.id);

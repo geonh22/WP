@@ -1,10 +1,13 @@
 script(src='//cdn.ckeditor.com/4.11.1/standard/ckeditor.js')
+link(rel="stylesheet", href="https://code.jquery.com/ui/1.12.1/thems/base/jquery")
+script(src="https://code.jquery.com/jquery-1.12.4.js")
+script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
 .form-group
   label(for="title") 제목
   input.form-control(type="text", name="title", placeholder="공모전 제목을 입력해주세요.", value=question.title)
-//- .form-group
-//-   label(for="question") 공모전 설명
-//-   textarea.form-control(name="content", rows="5")= question.content
+.form-group
+  label(for="question") 공모전 설명
+  textarea.form-control(name="content", rows="5")= question.content
 .form-group
   label(for="host") 주최사
   input.form-control(type="text",name="host", palceholder="주최사를 입력해주세요.", value=question.host)
@@ -29,14 +32,6 @@ script(src='//cdn.ckeditor.com/4.11.1/standard/ckeditor.js')
 .form-group
   label(for="tel") 연락처
   input.form-control(type="text",name="tel", palceholder="연락처를 입력해주세요.", value=question.tel)
-.form-group
-  lable(for="content") 세부정보
-  textarea#content
-  script.
-    CKEDITOR.replace( 'content');
-    //-  ,{
-    //-   filebrowserUploadUrl:'../routes/questions',
-    //- });
 .form-group
   label(for="tags") 태그
   input.form-control(type="text", name="tags", placeholder="태그를 입력해주세요.", value=question.tags ? question.tags.join(" ") : "")

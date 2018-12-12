@@ -2,17 +2,11 @@
   .numbers.like-badge
     .number
       span.number.num-likes= answer.numLikes
-      //- span.number.num-likes= answer.numHates
     .button
       a.like.answer-like-btn(href='#', data-id=answer.id)
         i.fa.fa-thumbs-up
         | 
         | 좋아요
-    //- .button
-    //-   a.hate.answer-hate-btn(href='#', data-id=answer.id)
-    //-     i.fa.fa-thumbs-down
-    //-     | 
-    //-     | 싫어요
   .numbers.hate-badge
     .number
       span.number.num-hates= answer.numHates

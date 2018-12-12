@@ -35,66 +35,12 @@ module.exports = (app, passport) => {
       res.redirect('/questions');
     }
   );
-  // app.get('/auth/naver',
-  //   passport.authenticate('naver', { scope : 'email' })
-  // );
-
-  // app.get('/auth/naver/callback',
-  //   passport.authenticate('naver', {
-  //     failureRedirect : '/signin',
-  //     failureFlash : true // allow flash messages
-  //   }), (req, res, next) => {
-  //     req.flash('success', 'Welcome!');
-  //     res.redirect('/questions');
-  //   }
-  // )
   app.get('/signout', (req, res) => {
     req.logout();
     req.flash('success', 'Successfully signed out');
     res.redirect('/');
   });
 };
-//authentication
-// var jwt = require('jsonwebtoken');
-// var compose = require('composable-middleware');
-// var SECRET = 'token secret';
-// var expires = 60;
-
-// fucnction signToken(id){
-//   return jwt.sign({id:id}, SECRET, {expiresInMinutes:EXPIRES});
-// }
-
-// function isAuthenticated(){
-//   return compose()
-//     .use(function req,res,next){
-//       var decoded = jwt.verify(req.headers.authorization, SECRET);
-//       console.log(decoded)
-//       req.user = decode;
-//     })
-// }
-
-// getToken: function(){
-//   var token = jwt.sign({
-//     id: this.id
-//   }, secret);
-//   return token;
-// }
-
-// router.post('/signin',function(req,res){
-//   db.users.findOne({
-//     where: {email: req.body.email}
-//   }).then(function(user){
-//     if(user &&cipher(req.body.password)===user.password){
-//       res.json({
-//         token: user.getToken()
-//       });
-//     }else{
-//       throw err
-//     }
-//   }).catch(function(err){
-
-//   });
-// });
 
 'use strict';
 
